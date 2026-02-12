@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Mamta ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+background:black;
+font-family:'Segoe UI',sans-serif;
+color:white;
+overflow:hidden;
+text-align:center;
+}
+
+/* CURTAINS */
+.curtain-left,.curtain-right{
+position:fixed;
+top:0;
+width:50%;
+height:100%;
+background:linear-gradient(#8B0000,#B22222);
+z-index:10;
+transition:2s ease-in-out;
+}
+.curtain-left{left:0;}
+.curtain-right{right:0;}
+
+.open-left{transform:translateX(-100%);}
+.open-right{transform:translateX(100%);}
+
+/* CENTER TEXT */
+.center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:11;
+}
+
+/* BUTTON */
+button{
+padding:12px 30px;
+background:white;
+color:red;
+border:none;
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+margin-top:20px;
+}
+
+/* DOOR SCREEN */
+.door{
+display:none;
+position:fixed;
+width:100%;
+height:100%;
+background:#300000;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:5;
+animation:fadeIn 1s;
+}
+
+/* GALLERY */
+.gallery{
+display:none;
+padding-top:60px;
+animation:fadeIn 1.5s;
+}
+
+.slide{
+display:none;
+animation:fadeIn 1.5s;
+}
+
+.slide img{
+width:260px;
+border-radius:15px;
+box-shadow:0 0 25px red;
+}
+
+.quote{
+margin-top:20px;
+font-size:18px;
+padding:0 20px;
+}
+
+/* FINAL SCREEN */
+.final{
+display:none;
+position:fixed;
+width:100%;
+height:100%;
+background:#8B0000;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+animation:fadeIn 2s;
+}
+
+/* HEARTS */
+.heart{
+position:fixed;
+color:red;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="curtain-left" id="left"></div>
+<div class="curtain-right" id="right"></div>
+
+<div class="center" id="startText">
+<h1>🎭 Happy Birthday Mokkel 🎂</h1>
+<button onclick="openCurtain()">Open Surprise</button>
+</div>
+
+<div class="door" id="door">
+<h1>🚪 Opening Beautiful Memories...</h1>
+</div>
+
+<div class="gallery" id="gallery">
+
+<div class="slide">
+<img src="photo1.jpeg">
+<div class="quote">Mamta, some people enter life like a chapter… but you became the whole story.</div>
+</div>
+
+<div class="slide">
+<img src="photo2.jpeg">
+<div class="quote">You are not just my best friend, you are the calm in my chaos.</div>
+</div>
+
+<div class="slide">
+<img src="photo3.jpeg">
+<div class="quote">Through silly fights and endless laughs… you stayed.</div>
+</div>
+
+<div class="slide">
+<img src="photo4.jpeg">
+<div class="quote">On your birthday, I want you to know — you are deeply cherished.</div>
+</div>
+
+<div class="slide">
+<img src="photo5.jpeg">
+<div class="quote">No matter where life takes us, I will always stand beside you.</div>
+</div>
+
+<br><br>
+<button onclick="showFinal()">Final Surprise ❤️</button>
+
+</div>
+
+<div class="final" id="final">
+<h1>I love you janeman ❤️</h1>
+<h2>— Rahul</h2>
+</div>
+
+<audio id="music" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openCurtain(){
+document.getElementById("music").play();
+document.getElementById("left").classList.add("open-left");
+document.getElementById("right").classList.add("open-right");
+document.getElementById("startText").style.display="none";
+
+setTimeout(()=>{
+document.getElementById("door").style.display="flex";
+setTimeout(()=>{
+document.getElementById("door").style.display="none";
+document.getElementById("gallery").style.display="block";
+showSlides();
+},2000);
+},2000);
+}
+
+let slideIndex=0;
+function showSlides(){
+let slides=document.getElementsByClassName("slide");
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+slideIndex++;
+if(slideIndex>slides.length){slideIndex=1}
+slides[slideIndex-1].style.display="block";
+setTimeout(showSlides,3000);
+}
+
+function showFinal(){
+document.getElementById("gallery").style.display="none";
+document.getElementById("final").style.display="flex";
+}
+
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},6000);
+},500);
+</script>
+
+</body>
+</html>
