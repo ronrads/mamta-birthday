@@ -26,17 +26,22 @@ transition:2s ease-in-out;
 }
 .curtain-left{left:0;}
 .curtain-right{right:0;}
-
 .open-left{transform:translateX(-100%);}
 .open-right{transform:translateX(100%);}
 
-/* CENTER TEXT */
+/* CENTER */
 .center{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 z-index:11;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px red;}
+to{text-shadow:0 0 25px pink;}
 }
 
 /* BUTTON */
@@ -51,7 +56,7 @@ cursor:pointer;
 margin-top:20px;
 }
 
-/* DOOR SCREEN */
+/* DOOR */
 .door{
 display:none;
 position:fixed;
@@ -77,10 +82,10 @@ display:none;
 animation:fadeIn 1.5s;
 }
 
-.slide img{
-width:260px;
+.slide img, .slide video{
+width:280px;
 border-radius:15px;
-box-shadow:0 0 25px red;
+box-shadow:0 0 30px red;
 }
 
 .quote{
@@ -89,7 +94,7 @@ font-size:18px;
 padding:0 20px;
 }
 
-/* FINAL SCREEN */
+/* FINAL */
 .final{
 display:none;
 position:fixed;
@@ -132,34 +137,55 @@ to{opacity:1;}
 </div>
 
 <div class="door" id="door">
-<h1>🚪 Opening Beautiful Memories...</h1>
+<h1>✨ Unlocking Beautiful Memories...</h1>
 </div>
 
 <div class="gallery" id="gallery">
 
 <div class="slide">
 <img src="photo1.jpeg">
-<div class="quote">Mamta, some people enter life like a chapter… but you became the whole story.</div>
+<div class="quote">You became my favorite chapter of life.</div>
 </div>
 
 <div class="slide">
 <img src="photo2.jpeg">
-<div class="quote">You are not just my best friend, you are the calm in my chaos.</div>
+<div class="quote">You are the calm in my chaos.</div>
 </div>
 
 <div class="slide">
 <img src="photo3.jpeg">
-<div class="quote">Through silly fights and endless laughs… you stayed.</div>
+<div class="quote">Through everything… you stayed.</div>
 </div>
 
 <div class="slide">
 <img src="photo4.jpeg">
-<div class="quote">On your birthday, I want you to know — you are deeply cherished.</div>
+<div class="quote">You deserve the happiest birthday.</div>
 </div>
 
 <div class="slide">
 <img src="photo5.jpeg">
-<div class="quote">No matter where life takes us, I will always stand beside you.</div>
+<div class="quote">Forever grateful for you.</div>
+</div>
+
+<div class="slide">
+<img src="photo6.jpeg">
+<div class="quote">And here’s another memory I treasure deeply ❤️</div>
+</div>
+
+<!-- VIDEO 1 -->
+<div class="slide">
+<video autoplay muted loop playsinline>
+<source src="video1.mp4" type="video/mp4">
+</video>
+<div class="quote">Our moments… captured forever.</div>
+</div>
+
+<!-- VIDEO 2 -->
+<div class="slide">
+<video autoplay muted loop playsinline>
+<source src="video2.mp4" type="video/mp4">
+</video>
+<div class="quote">Every second with you feels magical.</div>
 </div>
 
 <br><br>
@@ -202,7 +228,7 @@ slides[i].style.display="none";
 slideIndex++;
 if(slideIndex>slides.length){slideIndex=1}
 slides[slideIndex-1].style.display="block";
-setTimeout(showSlides,3000);
+setTimeout(showSlides,4000);
 }
 
 function showFinal(){
@@ -223,3 +249,6 @@ setTimeout(()=>{heart.remove();},6000);
 
 </body>
 </html>
+
+
+
